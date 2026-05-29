@@ -1,0 +1,538 @@
+/* ===== 기본 리셋 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --frame: clamp(
+    26px,
+    7.5vw,
+    34px
+  ); /* 꽃무늬 테두리 두께 (화면 폭에 따라 유동) */
+  --green: #9cc66e;
+  --green-soft: #dcecca;
+  --orange-soft: #fbd9a4;
+  --ink: #3a3a3a;
+  --pad: clamp(16px, 5.5vw, 26px); /* 테두리 안쪽 콘텐츠 좌우 여백 */
+}
+
+html,
+body {
+  background: #efeae0;
+  color: var(--ink);
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Pretendard", sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ===== 모바일 폭 고정 (PC에서도 모바일처럼) ===== */
+.invitation {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* ===== 사방 꽃무늬 액자 테두리 ===== */
+/* 좌·우 띠: 전체 높이로 깔아 모서리까지 세로 패턴이 끊기지 않게 (뒤쪽 레이어) */
+.frame-left,
+.frame-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--frame);
+  background-image: url("img/flower-v.png");
+  background-repeat: repeat-y;
+  background-size: var(--frame) auto;
+  z-index: 4;
+  pointer-events: none;
+}
+.frame-left {
+  left: 0;
+}
+.frame-right {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+/* 위·아래 띠: 양 끝을 테두리 두께만큼 잘라 모서리는 세로 띠가 차지하도록 (앞쪽 레이어) */
+.frame-top,
+.frame-bottom {
+  position: absolute;
+  left: var(--frame);
+  right: var(--frame);
+  height: var(--frame);
+  background-image: url("img/flower.png");
+  background-repeat: repeat-x;
+  background-size: auto var(--frame);
+  z-index: 5;
+  pointer-events: none;
+}
+.frame-top {
+  top: 0;
+}
+.frame-bottom {
+  bottom: 0;
+  transform: scaleY(-1);
+}
+
+/* ===== 콘텐츠 영역 (테두리 안쪽) ===== */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: calc(var(--frame) + 18px) var(--pad) calc(var(--frame) + 18px);
+}
+
+section {
+  padding: 30px 0;
+  text-align: center;
+}
+
+.divider {
+  border: none;
+  border-top: 1px dashed #d8d8d8;
+  margin: 0 8px;
+}
+
+.section-title {
+  font-size: clamp(20px, 6vw, 24px);
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 26px;
+}
+
+/* ===== 1. 표지 ===== */
+.cover {
+  padding-top: 12px;
+}
+.cover-bird-wrap {
+  position: relative;
+  width: 72%;
+  max-width: 300px;
+  margin: 0 auto 22px;
+}
+.cover-bird {
+  display: block;
+  width: 100%;
+}
+.cover-doves {
+  position: absolute;
+  top: 32%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #555;
+  white-space: nowrap;
+}
+.cover-names-en {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.cover-title {
+  font-size: clamp(38px, 12vw, 52px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+}
+.cover-photo {
+  width: 40%;
+  margin: 0 auto;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+.cover-photo img {
+  width: 100%;
+  display: block;
+}
+.cover-cake {
+  display: block;
+  width: 48%;
+  max-width: 200px;
+  margin: 26px 0 0 auto;
+}
+
+/* ===== 2. 예식 정보 ===== */
+.info-date {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.info-place {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.info-times {
+  list-style: none;
+  display: inline-block;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.9;
+}
+.info-deco {
+  color: var(--green);
+  font-size: 18px;
+  letter-spacing: 6px;
+  margin: 30px 0;
+}
+.parent-block {
+  margin: 34px 0;
+}
+.parent-photo {
+  width: 150px;
+  height: 180px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #eef1ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aab2a0;
+  font-size: 14px;
+}
+.parent-line {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 6px;
+}
+.parent-name {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* ===== 3. 초대글 ===== */
+.greeting-deco {
+  font-size: 30px;
+  margin: 6px 0 24px;
+}
+.greeting-text {
+  font-size: 16px;
+  line-height: 2;
+  margin-bottom: 26px;
+}
+.greeting-sub {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 30px;
+}
+.greeting-signature {
+  font-size: 17px;
+  margin-top: 14px;
+}
+.greeting-signature span {
+  font-size: 14px;
+  color: #777;
+  margin-right: 4px;
+}
+.greeting-signature strong {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* ===== 4. 갤러리 ===== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.gallery-item {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #eee;
+}
+.gallery-item:first-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 4 / 3;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== 5. 캘린더 ===== */
+.calendar-photo {
+  width: 60%;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 24px;
+  background: #eef1ea;
+  border: 6px solid #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aab2a0;
+  font-size: 14px;
+}
+.calendar-line {
+  border: none;
+  border-top: 1px dashed #bbb;
+  margin: 0 0 18px;
+}
+.calendar-month {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.calendar-table {
+  width: 86%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+.calendar-table th {
+  font-weight: 600;
+  color: #666;
+  padding: 8px 0;
+}
+.calendar-table td {
+  padding: 9px 0;
+  color: #444;
+}
+.day-mark {
+  position: relative;
+  font-weight: 700;
+  color: #e0573e;
+}
+.day-mark::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #e0573e;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ===== 6. 오시는 길 ===== */
+.location-addr {
+  margin-bottom: 14px;
+}
+.location-addr p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.addr-strong {
+  font-weight: 700;
+}
+.map-box {
+  width: 100%;
+  height: 200px;
+  margin: 16px 0 8px;
+  background: #e9e9e9;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 14px;
+}
+.map-note {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 24px;
+}
+.location-detail {
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.location-detail .detail-head {
+  margin: 18px 0 6px;
+}
+.location-detail ul {
+  list-style: none;
+  padding-left: 4px;
+}
+.location-detail li {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 4px;
+}
+.location-detail li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--green);
+}
+
+/* 공용 연한 버튼 */
+.btn-light {
+  background: #fdf3cf;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 18px;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ===== 7. 마음 전하실 곳 ===== */
+.account-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.account-side {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.account-card {
+  border-radius: 6px;
+  padding: 18px 8px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.account-card.groom {
+  background: var(--green-soft);
+}
+.account-card.bride {
+  background: var(--orange-soft);
+}
+.account-card .bank {
+  word-break: break-all;
+}
+.account-card .holder {
+  margin: 4px 0 12px;
+}
+.copy-link {
+  font-size: 13px;
+  text-decoration: underline;
+  color: #555;
+  cursor: pointer;
+}
+
+/* ===== 8. 축하 메시지 ===== */
+.guestbook-list {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.guestbook-item {
+  border-bottom: 1px solid #eee;
+  padding: 14px 4px;
+}
+.gb-name {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+.gb-msg {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+.gb-date {
+  font-size: 12px;
+  color: #aaa;
+}
+.guestbook-write {
+  border: 1px solid #e3e3e3;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: left;
+}
+.guestbook-write textarea {
+  width: 100%;
+  border: none;
+  resize: none;
+  font-family: inherit;
+  font-size: 14px;
+  background: transparent;
+  outline: none;
+}
+.gb-write-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+.gb-count {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* ===== 반응형 ===== */
+
+/* 작은 폰 (≤ 380px) */
+@media (max-width: 380px) {
+  section {
+    padding: 24px 0;
+  }
+  .cover-names-en,
+  .greeting-text {
+    font-size: 15px;
+  }
+  .info-date {
+    font-size: 17px;
+  }
+  .calendar-table {
+    font-size: 15px;
+    width: 94%;
+  }
+  .parent-photo {
+    width: 132px;
+    height: 158px;
+  }
+  .account-card {
+    padding: 14px 6px;
+    font-size: 13px;
+  }
+  .account-cols {
+    gap: 10px;
+  }
+}
+
+/* 아주 작은 폰 (≤ 330px) */
+@media (max-width: 330px) {
+  .cover-photo {
+    width: 72%;
+  }
+  .calendar-table {
+    font-size: 13px;
+  }
+  .day-mark::after {
+    width: 26px;
+    height: 26px;
+  }
+  .account-card {
+    font-size: 12px;
+    padding: 12px 4px;
+  }
+  .account-side {
+    font-size: 16px;
+  }
+}
+
+/* 큰 화면(PC/태블릿): 모바일 폭 유지하되 카드처럼 띄워 보이기 */
+@media (min-width: 600px) {
+  body {
+    padding: 24px 0;
+  }
+  .invitation {
+    min-height: auto;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* 가로 모드/짧은 화면에서 100vh 의존 제거 */
+@media (max-height: 620px) {
+  .invitation {
+    min-height: 100%;
+  }
+}
