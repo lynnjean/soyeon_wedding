@@ -1,3 +1,31 @@
+/* ===== 폰트 ===== */
+@font-face {
+  font-family: "Stadio Now Display";
+  src: url("fonts/StadioNowDisplay-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gyeonggi Batang";
+  src:
+    url("https://cdn.jsdelivr.net/gh/fonts-archive/GyeonggiBatang/GyeonggiBatang-Bold.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/fonts-archive/GyeonggiBatang/GyeonggiBatang-Bold.woff")
+      format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "HsGlidingSerif";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2604-1@1.0/HSHwalkongSerif-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ===== 기본 리셋 ===== */
 * {
   margin: 0;
@@ -98,6 +126,20 @@ section {
   margin: 0 8px;
 }
 
+/* 구분선 위에 꽃 이미지 겹치기 */
+.divider-deco {
+  position: relative;
+}
+.divider-deco img {
+  position: absolute;
+  right: 10px;
+  top: calc(50% + 25px);
+  transform: translateY(-50%);
+  width: 90px;
+  height: auto;
+  pointer-events: none;
+}
+
 .section-title {
   font-size: clamp(20px, 6vw, 24px);
   font-weight: 700;
@@ -121,23 +163,27 @@ section {
 }
 .cover-doves {
   position: absolute;
-  top: 32%;
+  top: 40%;
   left: 51%;
   transform: translate(-50%, -50%);
-  font-size: 15px;
+  font-family: "Antic", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
   letter-spacing: 1px;
   color: #555;
   white-space: nowrap;
 }
 .cover-names-en {
-  font-size: 16px;
-  font-weight: 600;
+  font-family: "Stadio Now Display", serif;
+  font-size: 18px;
+  font-weight: 700;
   letter-spacing: 1px;
   margin-bottom: 10px;
 }
 .cover-title {
+  font-family: "Antic", sans-serif;
   font-size: clamp(38px, 12vw, 52px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: -1px;
   margin-bottom: 30px;
@@ -171,33 +217,48 @@ section {
   font-weight: 600;
   margin-bottom: 18px;
 }
-.info-times {
-  list-style: none;
+.info-box {
   display: inline-block;
   text-align: left;
+  font-family: "Gyeonggi Batang", serif;
+  font-weight: 700;
+}
+.info-times {
+  list-style: none;
+  display: block;
   font-size: 15px;
   line-height: 1.9;
 }
 .info-deco {
-  color: var(--green);
-  font-size: 18px;
-  letter-spacing: 6px;
   margin: 30px 0;
+}
+.info-deco img {
+  width: 120px;
+  max-width: 60%;
+  height: auto;
+  display: inline-block;
 }
 .parent-block {
   margin: 34px 0;
+  font-family: "Gyeonggi Batang", serif;
+  font-weight: 700;
 }
 .parent-photo {
   width: 150px;
   height: 180px;
   margin: 0 auto 16px;
-  border-radius: 50%;
-  background: #eef1ea;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #aab2a0;
   font-size: 14px;
+}
+.parent-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 .parent-line {
   font-size: 16px;
@@ -211,20 +272,35 @@ section {
 
 /* ===== 3. 초대글 ===== */
 .greeting-deco {
-  font-size: 30px;
   margin: 6px 0 24px;
 }
+
+.greeting-deco img {
+  width: 84px;
+  height: auto;
+  display: inline-block;
+}
+.greeting-deco--right {
+  text-align: right;
+  padding-right: 50px;
+}
+.greeting-deco.heart img {
+  width: 120px;
+}
 .greeting-text {
-  font-size: 16px;
-  line-height: 2;
-  margin-bottom: 26px;
+  font-family: "HsGlidingSerif", serif;
+  font-size: 18px;
+  line-height: 1.95;
+  margin-bottom: 24px;
 }
 .greeting-sub {
-  font-size: 14px;
+  font-family: "HsGlidingSerif", serif;
+  font-size: 15px;
   color: #999;
   margin-bottom: 30px;
 }
 .greeting-signature {
+  font-family: "HsGlidingSerif", serif;
   font-size: 17px;
   margin-top: 14px;
 }
@@ -234,7 +310,7 @@ section {
   margin-right: 4px;
 }
 .greeting-signature strong {
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 700;
 }
 
@@ -283,6 +359,7 @@ section {
 .calendar-month {
   font-size: 18px;
   font-weight: 700;
+  margin-top: 60px;
   margin-bottom: 14px;
 }
 .calendar-table {
@@ -310,16 +387,28 @@ section {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 30px;
-  height: 30px;
-  border: 2px solid #e0573e;
-  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  background: url("img/cercle.png") center / contain no-repeat;
   transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 /* ===== 6. 오시는 길 ===== */
+.addr-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  text-align: left;
+}
 .location-addr {
-  margin-bottom: 14px;
+  margin-bottom: 0;
+}
+.addr-row .btn-light {
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 .location-addr p {
   font-size: 16px;
@@ -416,6 +505,35 @@ section {
   text-decoration: underline;
   color: #555;
   cursor: pointer;
+  user-select: none;
+}
+
+/* 복사 완료 토스트 팝업 */
+.copy-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 40px;
+  transform: translate(-50%, 16px);
+  max-width: 88%;
+  padding: 12px 20px;
+  background: rgba(40, 40, 40, 0.92);
+  color: #fff;
+  font-size: 14px;
+  border-radius: 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  z-index: 100;
+  pointer-events: none;
+}
+.copy-toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
 }
 
 /* ===== 8. 축하 메시지 ===== */
