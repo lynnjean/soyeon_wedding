@@ -112,7 +112,7 @@ body {
 .content {
   position: relative;
   z-index: 1;
-  padding: calc(var(--frame) + 18px) var(--pad) calc(var(--frame) + 18px);
+  padding: calc(var(--frame) + 18px) calc(var(--frame) + 14px);
 }
 
 section {
@@ -167,7 +167,7 @@ section {
   left: 51%;
   transform: translate(-50%, -50%);
   font-family: "Antic", sans-serif;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 1px;
   color: #555;
@@ -282,7 +282,7 @@ section {
 }
 .greeting-deco--right {
   text-align: right;
-  padding-right: 50px;
+  padding-right: 30px;
 }
 .greeting-deco.heart img {
   width: 120px;
@@ -312,6 +312,52 @@ section {
 .greeting-signature strong {
   font-size: 28px;
   font-weight: 700;
+}
+
+/* 클릭하면 크게 볼 수 있는 사진 */
+.zoomable {
+  cursor: zoom-in;
+}
+
+/* 사진 확대 라이트박스 */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+  z-index: 200;
+  cursor: zoom-out;
+}
+.lightbox.show {
+  opacity: 1;
+  visibility: visible;
+}
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 6px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transform: scale(0.95);
+  transition: transform 0.25s ease;
+}
+.lightbox.show img {
+  transform: scale(1);
+}
+.lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 34px;
+  line-height: 1;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
 }
 
 /* ===== 4. 갤러리 ===== */
@@ -419,15 +465,20 @@ section {
 }
 .map-box {
   width: 100%;
-  height: 200px;
+  height: 260px;
   margin: 16px 0 8px;
   background: #e9e9e9;
   border-radius: 6px;
+  overflow: hidden;
+  color: #999;
+  font-size: 14px;
+}
+.map-box.map-fallback {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #999;
-  font-size: 14px;
+  text-align: center;
+  line-height: 1.5;
 }
 .map-note {
   font-size: 13px;
@@ -483,7 +534,7 @@ section {
 }
 .account-card {
   border-radius: 6px;
-  padding: 18px 8px;
+  padding: 14px 10px;
   margin-bottom: 14px;
   font-size: 14px;
   line-height: 1.5;
@@ -494,18 +545,44 @@ section {
 .account-card.bride {
   background: var(--orange-soft);
 }
-.account-card .bank {
+.account-card .acc-bank {
+  font-size: 13px;
+  color: #777;
+}
+.account-card .acc-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 2px 0;
+}
+.account-card .acc-number {
+  font-weight: 700;
   word-break: break-all;
 }
-.account-card .holder {
-  margin: 4px 0 12px;
-}
-.copy-link {
+.account-card .acc-name {
   font-size: 13px;
-  text-decoration: underline;
+  color: #555;
+}
+.copy-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
   color: #555;
   cursor: pointer;
-  user-select: none;
+  transition: color 0.15s ease;
+}
+.copy-btn:hover {
+  color: #222;
+}
+.copy-btn:active {
+  transform: scale(0.92);
 }
 
 /* 복사 완료 토스트 팝업 */
@@ -558,11 +635,67 @@ section {
   font-size: 12px;
   color: #aaa;
 }
+.gb-state {
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+  padding: 24px 0;
+}
+
+/* 페이지네이션 */
+.gb-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.gb-page-btn {
+  min-width: 30px;
+  height: 30px;
+  padding: 0 8px;
+  border: 1px solid #e3e3e3;
+  border-radius: 6px;
+  background: #fff;
+  color: #555;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+.gb-page-btn:hover:not(:disabled) {
+  background: #f4f4f4;
+}
+.gb-page-btn.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+  font-weight: 700;
+}
+.gb-page-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
 .guestbook-write {
   border: 1px solid #e3e3e3;
   border-radius: 8px;
   padding: 12px;
   text-align: left;
+}
+.gb-name-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #eee;
+  padding: 4px 0 8px;
+  margin-bottom: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  background: transparent;
+  outline: none;
 }
 .guestbook-write textarea {
   width: 100%;
@@ -582,6 +715,35 @@ section {
 .gb-count {
   font-size: 12px;
   color: #aaa;
+}
+.gb-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    opacity 0.15s ease,
+    transform 0.1s ease;
+}
+.gb-submit-btn:hover {
+  opacity: 0.88;
+}
+.gb-submit-btn:active {
+  transform: scale(0.92);
+}
+.gb-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.gb-submit-btn svg {
+  transform: scaleX(-1);
 }
 
 /* ===== 반응형 ===== */
