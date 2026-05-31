@@ -90,41 +90,102 @@
 
   // ===== 사진 확대 라이트박스 =====
   (function () {
-    // 확대해서 볼 사진들 (갤러리 + 표지 메인 사진)
-    const photos = document.querySelectorAll(
-      ".gallery-item img, .cover-photo img",
+    const galleryImgs = Array.from(
+      document.querySelectorAll(".gallery-item img"),
     );
-    if (!photos.length) return;
+    const coverImgs = Array.from(document.querySelectorAll(".cover-photo img"));
+    if (!galleryImgs.length && !coverImgs.length) return;
+
+    // 갤러리 사진 목록 (캐러셀용)
+    const gallerySrcs = galleryImgs.map(function (img) {
+      return { src: img.currentSrc || img.src, alt: img.alt };
+    });
 
     // 오버레이 생성
     const lightbox = document.createElement("div");
     lightbox.className = "lightbox";
     lightbox.innerHTML =
-      '<span class="lightbox-close" aria-label="닫기">&times;</span><img alt="확대 이미지" />';
+      '<span class="lightbox-close" aria-label="닫기">&times;</span>' +
+      '<button class="lightbox-nav prev" type="button" aria-label="이전 사진"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>' +
+      '<img alt="확대 이미지" />' +
+      '<button class="lightbox-nav next" type="button" aria-label="다음 사진"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>' +
+      '<span class="lightbox-count"></span>';
     document.body.appendChild(lightbox);
     const bigImg = lightbox.querySelector("img");
+    const prevBtn = lightbox.querySelector(".prev");
+    const nextBtn = lightbox.querySelector(".next");
+    const countEl = lightbox.querySelector(".lightbox-count");
 
-    function open(src, alt) {
+    let currentIndex = -1; // -1 = 단일(표지) 모드
+
+    function showIndex(i) {
+      const n = gallerySrcs.length;
+      if (!n) return;
+      currentIndex = (i + n) % n; // 순환
+      bigImg.src = gallerySrcs[currentIndex].src;
+      bigImg.alt = gallerySrcs[currentIndex].alt || "확대 이미지";
+      countEl.textContent = currentIndex + 1 + " / " + n;
+    }
+
+    function openGallery(i) {
+      lightbox.classList.add("gallery-mode");
+      showIndex(i);
+      lightbox.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+
+    function openSingle(src, alt) {
+      currentIndex = -1;
+      lightbox.classList.remove("gallery-mode");
       bigImg.src = src;
       bigImg.alt = alt || "확대 이미지";
       lightbox.classList.add("show");
-      document.body.style.overflow = "hidden"; // 배경 스크롤 잠금
+      document.body.style.overflow = "hidden";
     }
+
     function close() {
       lightbox.classList.remove("show");
       document.body.style.overflow = "";
     }
 
-    photos.forEach(function (img) {
+    // 갤러리 사진 → 캐러셀 모드
+    galleryImgs.forEach(function (img, i) {
       img.classList.add("zoomable");
       img.addEventListener("click", function () {
-        open(img.currentSrc || img.src, img.alt);
+        openGallery(i);
+      });
+    });
+    // 표지 사진 → 단일 확대
+    coverImgs.forEach(function (img) {
+      img.classList.add("zoomable");
+      img.addEventListener("click", function () {
+        openSingle(img.currentSrc || img.src, img.alt);
       });
     });
 
-    lightbox.addEventListener("click", close);
+    prevBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      showIndex(currentIndex - 1);
+    });
+    nextBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      showIndex(currentIndex + 1);
+    });
+
+    // 배경 클릭 시 닫기 (이미지/화살표 클릭은 제외)
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === bigImg) return;
+      close();
+    });
+
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") close();
+      if (!lightbox.classList.contains("show")) return;
+      if (e.key === "Escape") {
+        close();
+      } else if (lightbox.classList.contains("gallery-mode")) {
+        if (e.key === "ArrowLeft") showIndex(currentIndex - 1);
+        if (e.key === "ArrowRight") showIndex(currentIndex + 1);
+      }
     });
   })();
 
