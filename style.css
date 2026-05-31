@@ -351,9 +351,15 @@ section {
 }
 .lightbox-close {
   position: absolute;
-  top: 16px;
-  right: 20px;
-  font-size: 34px;
+  top: 12px;
+  right: 16px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
   line-height: 1;
   color: #fff;
   cursor: pointer;
@@ -366,6 +372,7 @@ section {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 3;
   align-items: center;
   justify-content: center;
   width: 44px;
@@ -399,6 +406,7 @@ section {
   bottom: 28px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 3;
   color: #fff;
   font-size: 14px;
   letter-spacing: 1px;
