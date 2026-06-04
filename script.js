@@ -91,7 +91,9 @@
   // ===== 사진 확대 라이트박스 =====
   (function () {
     const galleryImgs = Array.from(
-      document.querySelectorAll(".gallery-item img"),
+      document.querySelectorAll(
+        ".gallery-zoom, .gallery-quad img:not(.quad-flower), .gallery-item img:not(.gallery-birds)",
+      ),
     );
     const coverImgs = Array.from(document.querySelectorAll(".cover-photo img"));
     if (!galleryImgs.length && !coverImgs.length) return;
