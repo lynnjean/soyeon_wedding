@@ -10,10 +10,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Antic&family=Dekko&family=Dongle:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Antic&family=Dekko&family=Dongle:wght@400;700&family=Gaegu:wght@400;700&family=Jua&family=Do+Hyeon&family=Black+Han+Sans&family=Gothic+A1:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=24" />
+    <link rel="stylesheet" href="style.css?v=110" />
   </head>
   <body>
     <!-- 모바일 청첩장: PC에서도 모바일 폭으로 고정 -->
@@ -22,22 +22,42 @@
       <div class="content">
         <!-- 1. 표지 -->
         <section class="cover">
-          <p class="cover-wedding-of">THE WEDDING OF</p>
-          <div class="cover-flower-wrap">
-            <img class="cover-flower" src="img/flower-1.png" alt="꽃 장식" />
-            <p class="cover-names">Je gyeong<br />&amp;<br />Soyeon</p>
+          <div class="cover-top">
+            <img
+              class="cover-main"
+              src="img/main-heart.png"
+              alt="신랑신부 메인 사진"
+            />
+            <div class="cover-since">
+              <span class="cover-since-date">Since January 12, 2019</span>
+              <span class="cover-since-num">8th</span>
+            </div>
+            <p class="cover-wedding-of">THE WEDDING OF</p>
           </div>
-          <p class="cover-info">2026.9.5.SUN 1PM<br />Agentofiore</p>
+          <p class="cover-couple">Song je gyeong ♡ Kim so yeon</p>
+          <div class="cover-trio">
+            <img src="img/l-flower.jpeg" alt="꽃 장식" />
+            <img
+              class="cover-trio-main"
+              src="img/main.png"
+              alt="신랑신부 메인 사진"
+            />
+            <img class="flip" src="img/l-flower.jpeg" alt="꽃 장식" />
+          </div>
+          <p class="cover-info">
+            2026/ 09/ 05 토요일 13:00<br />아젠토피오레 1층
+          </p>
+          <p class="cover-invite">
+            Inviting you to the wedding. Join us our life cycle.
+          </p>
         </section>
-
-        <hr class="divider" />
 
         <!-- 4. 갤러리 -->
         <section class="gallery">
           <img class="gallery-f1 gallery-zoom" src="img/f-1.png" alt="장식" />
           <img
             class="quad-flower quad-flower--left"
-            src="img/flower.png"
+            src="img/l-flower.jpeg"
             alt="꽃 장식"
           />
           <div class="gallery-trio gallery-trio--top">
@@ -49,18 +69,28 @@
             </div>
             <div class="trio-cell"></div>
           </div>
+          <img
+            class="quad-flower quad-flower--right"
+            src="img/leaf.png"
+            alt="잎 장식"
+          />
           <div class="gallery-trio gallery-trio--ratio">
             <div class="trio-cell"></div>
             <div class="trio-cell">
-              <img class="smail-down" src="img/smail.png" alt="장식" />
+              <img class="smail-down" src="img/smail.jpeg" alt="장식" />
             </div>
             <div class="trio-cell">
               <img class="gallery-zoom" src="img/f-4.png" alt="장식" />
             </div>
           </div>
           <img
+            class="quad-flower quad-flower--left"
+            src="img/s-flower1.png"
+            alt="꽃 장식"
+          />
+          <img
             class="quad-flower quad-flower--right"
-            src="img/flower.png"
+            src="img/s-flower2.png"
             alt="꽃 장식"
           />
           <div class="gallery-quad">
@@ -71,7 +101,7 @@
           </div>
           <img
             class="gallery-sep"
-            src="img/cake-bird.png"
+            src="img/cake-bird.jpeg"
             alt="케이크와 새 장식"
           />
           <div class="gallery-grid">
@@ -93,12 +123,10 @@
           </div>
         </section>
 
-        <hr class="divider" />
-
         <!-- 3. 초대글 -->
         <section class="greeting">
           <div class="greeting-deco">
-            <img src="img/letter.png" alt="편지" />
+            <img src="img/letter.jpeg" alt="편지" />
           </div>
           <img class="greeting-text-img" src="img/text.png" alt="초대 문구" />
           <img class="greeting-text-img" src="img/courple.png" alt="커플사진" />
@@ -117,8 +145,6 @@
           </p>
         </section>
 
-        <hr class="divider" />
-
         <!-- 혼주 정보 -->
         <section class="parents">
           <div class="parent-block">
@@ -126,7 +152,7 @@
               <img src="img/baby-man.png" alt="신랑 아기 사진" />
             </div>
             <p class="parent-line">송영관 · 정운희 장남</p>
-            <p class="parent-name">신랑 &nbsp;송제경</p>
+            <p class="parent-name">송 제 경</p>
           </div>
 
           <div class="parent-block">
@@ -134,7 +160,7 @@
               <img src="img/baby-woman.png" alt="신부 아기 사진" />
             </div>
             <p class="parent-line">김호철 · 홍미숙 차녀</p>
-            <p class="parent-name">신부 &nbsp;김소연</p>
+            <p class="parent-name">김 소 연</p>
           </div>
         </section>
 
@@ -150,7 +176,9 @@
                 <th>수</th>
                 <th>목</th>
                 <th>금</th>
-                <th>토</th>
+                <th class="day-mark">
+                  <img class="day-ring" src="img/ring.png" alt="반지" />토
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -161,9 +189,7 @@
                 <td>2</td>
                 <td>3</td>
                 <td>4</td>
-                <td class="day-mark">
-                  <img class="day-ring" src="img/ring.png" alt="반지" />5
-                </td>
+                <td class="day-mark">5</td>
               </tr>
             </tbody>
           </table>
@@ -183,14 +209,12 @@
           </div>
         </section>
 
-        <hr class="divider" />
-
         <!-- 6. 오시는 길 -->
         <section class="location">
           <h2 class="section-title">오시는 길</h2>
           <div class="addr-row">
             <div class="location-addr">
-              <p class="addr-strong">아젠토피오레 컨벤션 1층</p>
+              <p class="addr-strong">아젠토피오레 1층</p>
               <p class="addr-road">제주 제주시 서광로 112</p>
             </div>
             <button class="btn-light" type="button">주소 복사하기</button>
@@ -199,19 +223,21 @@
           <p class="map-note">◍ 마커 클릭 시, 네이버 지도로 연결됩니다.</p>
           <div class="location-detail">
             <p class="detail-head"><strong>버스 이용 시</strong></p>
-            <p class="detail-text">월구마을 / 동성마을 정류장에서 하차</p>
+            <ul>
+              <li>월구마을 / 동성마을 정류장에서 하차</li>
+            </ul>
             <p class="detail-head"><strong>주차 안내</strong></p>
             <ul>
               <li>
-                제 1 주차장:
+                제 1 주차장
                 <span class="lot-addr">아젠토피오레컨벤션 건물</span>
               </li>
               <li>
-                제 2 주차장:
+                제 2 주차장
                 <span class="lot-addr">오라이동 2228-1 (동성마을회관 옆)</span>
               </li>
               <li>
-                제 3 주차장:
+                제 3 주차장
                 <span class="lot-addr"
                   >서광로 124 (아젠토피오레 컨벤션 옆 건물)</span
                 >
@@ -220,8 +246,6 @@
           </div>
         </section>
 
-        <hr class="divider" />
-
         <!-- 7. 마음 전하실 곳 -->
         <section class="account">
           <h2 class="section-title">마음 전하실 곳</h2>
@@ -229,188 +253,118 @@
             <div class="account-col">
               <p class="account-side groom">신랑측</p>
               <div class="account-card groom">
-                <p class="acc-bank">농협</p>
-                <p class="acc-row">
-                  <span class="acc-number">3561194005123</span>
+                <div class="acc-top">
+                  <span class="acc-role">신랑</span>
+                  <span class="acc-name">송제경</span>
+                </div>
+                <div class="acc-bottom">
+                  <span class="acc-bank">KB국민</span>
+                  <span class="acc-number">70180104298404</span>
                   <button
                     class="copy-btn"
                     type="button"
                     aria-label="계좌번호 복사"
                   >
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <rect x="9" y="9" width="13" height="13" rx="2" />
-                      <path
-                        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                      />
-                    </svg>
+                    복사
                   </button>
-                </p>
-                <p class="acc-name">송제경</p>
+                </div>
               </div>
               <div class="account-card groom">
-                <p class="acc-bank">농협</p>
-                <p class="acc-row">
+                <div class="acc-top">
+                  <span class="acc-role">신랑 아버지</span>
+                  <span class="acc-name">송영관</span>
+                </div>
+                <div class="acc-bottom">
+                  <span class="acc-bank">농협</span>
                   <span class="acc-number">3521085008823</span>
                   <button
                     class="copy-btn"
                     type="button"
                     aria-label="계좌번호 복사"
                   >
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <rect x="9" y="9" width="13" height="13" rx="2" />
-                      <path
-                        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                      />
-                    </svg>
+                    복사
                   </button>
-                </p>
-                <p class="acc-name">송영관</p>
+                </div>
               </div>
               <div class="account-card groom">
-                <p class="acc-bank">농협</p>
-                <p class="acc-row">
+                <div class="acc-top">
+                  <span class="acc-role">신랑 어머니</span>
+                  <span class="acc-name">정운희</span>
+                </div>
+                <div class="acc-bottom">
+                  <span class="acc-bank">농협</span>
                   <span class="acc-number">3561194005123</span>
                   <button
                     class="copy-btn"
                     type="button"
                     aria-label="계좌번호 복사"
                   >
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <rect x="9" y="9" width="13" height="13" rx="2" />
-                      <path
-                        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                      />
-                    </svg>
+                    복사
                   </button>
-                </p>
-                <p class="acc-name">정운희</p>
+                </div>
               </div>
             </div>
             <div class="account-col">
               <p class="account-side bride">신부측</p>
               <div class="account-card bride">
-                <p class="acc-bank">농협</p>
-                <p class="acc-row">
+                <div class="acc-top">
+                  <span class="acc-role">신부</span>
+                  <span class="acc-name">김소연</span>
+                </div>
+                <div class="acc-bottom">
+                  <span class="acc-bank">농협</span>
                   <span class="acc-number">3022680535921</span>
                   <button
                     class="copy-btn"
                     type="button"
                     aria-label="계좌번호 복사"
                   >
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <rect x="9" y="9" width="13" height="13" rx="2" />
-                      <path
-                        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                      />
-                    </svg>
+                    복사
                   </button>
-                </p>
-                <p class="acc-name">김소연</p>
+                </div>
               </div>
               <div class="account-card bride">
-                <p class="acc-bank">농협</p>
-                <p class="acc-row">
+                <div class="acc-top">
+                  <span class="acc-role">신부 아버지</span>
+                  <span class="acc-name">김호철</span>
+                </div>
+                <div class="acc-bottom">
+                  <span class="acc-bank">농협</span>
                   <span class="acc-number">9010235100569</span>
                   <button
                     class="copy-btn"
                     type="button"
                     aria-label="계좌번호 복사"
                   >
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <rect x="9" y="9" width="13" height="13" rx="2" />
-                      <path
-                        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                      />
-                    </svg>
+                    복사
                   </button>
-                </p>
-                <p class="acc-name">김호철</p>
+                </div>
               </div>
               <div class="account-card bride">
-                <p class="acc-bank">농협</p>
-                <p class="acc-row">
+                <div class="acc-top">
+                  <span class="acc-role">신부 어머니</span>
+                  <span class="acc-name">홍미숙</span>
+                </div>
+                <div class="acc-bottom">
+                  <span class="acc-bank">농협</span>
                   <span class="acc-number">3528247105563</span>
                   <button
                     class="copy-btn"
                     type="button"
                     aria-label="계좌번호 복사"
                   >
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <rect x="9" y="9" width="13" height="13" rx="2" />
-                      <path
-                        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                      />
-                    </svg>
+                    복사
                   </button>
-                </p>
-                <p class="acc-name">홍미숙</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <hr class="divider" />
-
         <!-- 8. 축하 메시지 -->
         <section class="guestbook">
           <h2 class="section-title">축하 메시지</h2>
-          <div class="guestbook-list" id="gbList"></div>
-          <div class="gb-pagination" id="gbPagination"></div>
-          <div class="guestbook-write">
+          <div class="guestbook-write gb-write-row">
             <input
               class="gb-name-input"
               id="gbName"
@@ -418,36 +372,24 @@
               placeholder="이름"
               maxlength="20"
             />
-            <textarea
+            <input
+              class="gb-msg-input"
               id="gbMessage"
+              type="text"
               placeholder="축하 메시지를 남겨주세요"
-              rows="3"
               maxlength="3000"
-            ></textarea>
-            <div class="gb-write-bottom">
-              <span class="gb-count" id="gbCount">0/3000</span>
-              <button
-                class="gb-submit-btn"
-                id="gbSubmit"
-                type="button"
-                aria-label="등록"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="18"
-                  height="18"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <line x1="22" y1="2" x2="11" y2="13" />
-                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                </svg>
-              </button>
-            </div>
+            />
+            <button
+              class="gb-submit-btn"
+              id="gbSubmit"
+              type="button"
+              aria-label="보내기"
+            >
+              <img src="img/send.png" alt="보내기" />
+            </button>
           </div>
+          <div class="guestbook-list" id="gbList"></div>
+          <button class="gb-more" id="gbMore" type="button">더보기</button>
         </section>
       </div>
     </main>

@@ -205,6 +205,14 @@
       const holder = nameEl ? nameEl.textContent.trim() : "";
       if (ok) {
         showToast(holder + "님의 계좌번호가 복사되었습니다.");
+        // 복사된 카드의 은행·계좌번호·복사 텍스트를 잠깐 빨간색으로
+        const bottom = card.querySelector(".acc-bottom");
+        if (bottom) {
+          bottom.classList.add("copied");
+          setTimeout(function () {
+            bottom.classList.remove("copied");
+          }, 1200);
+        }
       } else {
         showToast("복사에 실패했습니다. 다시 시도해 주세요.");
       }
@@ -240,10 +248,17 @@
   const GUESTBOOK_URL =
     "https://script.google.com/macros/s/AKfycbwqyJB2M6VAE6uy83kdGfSwqdfRZ87rxcYQkxgzvSM3HZO_GGVYmym0ms9M_WlckNz8oQ/exec";
 
-  const PER_PAGE = 5; // 한 페이지에 보여줄 메시지 수
+  const PASTELS = [
+    "#e7f4d2",
+    "#fcd9d9",
+    "#d7f1ea",
+    "#eaf3ee",
+    "#fdeccf",
+    "#e8e3f5",
+  ];
 
   const listEl = document.getElementById("gbList");
-  const pagerEl = document.getElementById("gbPagination");
+  const moreEl = document.getElementById("gbMore");
   const nameEl = document.getElementById("gbName");
   const msgEl = document.getElementById("gbMessage");
   const countEl = document.getElementById("gbCount");
@@ -251,7 +266,6 @@
   if (!listEl) return;
 
   let messages = []; // 최신순 정렬된 메시지 배열
-  let currentPage = 1;
 
   const isConfigured =
     GUESTBOOK_URL && GUESTBOOK_URL.indexOf("YOUR_APPS_SCRIPT_URL") === -1;
@@ -269,7 +283,7 @@
     p.className = "gb-state";
     p.textContent = text;
     listEl.appendChild(p);
-    pagerEl.innerHTML = "";
+    if (moreEl) moreEl.style.display = "none";
   }
 
   function formatDate(value) {
@@ -292,77 +306,68 @@
   }
 
   function render() {
-    // 메시지가 0개여도 페이지(1)는 항상 표시
-    const totalPages = Math.max(1, Math.ceil(messages.length / PER_PAGE));
-    if (currentPage > totalPages) currentPage = totalPages;
-    if (currentPage < 1) currentPage = 1;
-
     listEl.innerHTML = "";
 
     if (!messages.length) {
-      // 메시지가 없을 때 안내 문구
       const empty = document.createElement("p");
       empty.className = "gb-state";
       empty.textContent = "작성된 메시지가 없습니다.";
       listEl.appendChild(empty);
-    } else {
-      const start = (currentPage - 1) * PER_PAGE;
-      const pageItems = messages.slice(start, start + PER_PAGE);
-
-      // 목록 렌더 (textContent 사용 → XSS 방지)
-      pageItems.forEach(function (m) {
-        const item = document.createElement("div");
-        item.className = "guestbook-item";
-
-        const name = document.createElement("p");
-        name.className = "gb-name";
-        name.textContent = m.name || "익명";
-
-        const msg = document.createElement("p");
-        msg.className = "gb-msg";
-        msg.textContent = m.message || "";
-
-        const date = document.createElement("p");
-        date.className = "gb-date";
-        date.textContent = formatDate(m.date);
-
-        item.appendChild(name);
-        item.appendChild(msg);
-        item.appendChild(date);
-        listEl.appendChild(item);
-      });
+      if (moreEl) moreEl.style.display = "none";
+      return;
     }
 
-    renderPager(totalPages);
+    // 2열 메이슨리: 좌/우 컬럼에 번갈아 배치
+    const colA = document.createElement("div");
+    colA.className = "gb-col";
+    const colB = document.createElement("div");
+    colB.className = "gb-col";
+
+    // 파스텔 카드 (textContent 사용 → XSS 방지)
+    messages.forEach(function (m, i) {
+      const item = document.createElement("div");
+      item.className = "guestbook-item";
+      item.style.background = PASTELS[i % PASTELS.length];
+
+      const msg = document.createElement("p");
+      msg.className = "gb-msg";
+      msg.textContent = m.message || "";
+
+      const name = document.createElement("p");
+      name.className = "gb-name";
+      name.textContent = m.name || "익명";
+
+      const date = document.createElement("p");
+      date.className = "gb-date";
+      date.textContent = formatDate(m.date);
+
+      item.appendChild(msg);
+      item.appendChild(name);
+      item.appendChild(date);
+
+      // 긴 메시지는 잘려 있고, 카드를 누르면 펼쳐짐
+      item.addEventListener("click", function () {
+        item.classList.toggle("expanded");
+      });
+
+      (i % 2 === 0 ? colA : colB).appendChild(item);
+    });
+
+    listEl.appendChild(colA);
+    listEl.appendChild(colB);
+
+    updateMore();
   }
 
-  function renderPager(totalPages) {
-    pagerEl.innerHTML = "";
-
-    function pageBtn(label, page, opts) {
-      opts = opts || {};
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "gb-page-btn";
-      b.textContent = label;
-      if (opts.active) b.classList.add("active");
-      if (opts.disabled) {
-        b.disabled = true;
-      } else {
-        b.addEventListener("click", function () {
-          currentPage = page;
-          render();
-          listEl.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
-      }
-      pagerEl.appendChild(b);
+  // 컨테이너가 접혀 있고 내용이 넘치면 더보기 버튼 표시
+  function updateMore() {
+    if (!moreEl) return;
+    const collapsed = listEl.classList.contains("gb-collapsed");
+    if (collapsed && listEl.scrollHeight > listEl.clientHeight + 4) {
+      moreEl.style.display = "block";
+    } else {
+      moreEl.style.display = "none";
     }
-
-    pageBtn("‹", currentPage - 1, { disabled: currentPage === 1 });
-    for (let i = 1; i <= totalPages; i++) {
-      pageBtn(String(i), i, { active: i === currentPage });
-    }
-    pageBtn("›", currentPage + 1, { disabled: currentPage === totalPages });
   }
 
   async function loadMessages() {
@@ -370,11 +375,12 @@
       setState("방명록 백엔드(Apps Script URL)가 아직 설정되지 않았습니다.");
       return;
     }
+    setState("축하 메시지 불러오는 중...");
     try {
       const res = await fetch(GUESTBOOK_URL, { method: "GET" });
       const data = await res.json();
       messages = (data && data.data) || [];
-      currentPage = 1;
+      listEl.classList.add("gb-collapsed");
       render();
     } catch (e) {
       setState("메시지를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.");
@@ -401,7 +407,6 @@
       date: new Date().toISOString(),
     };
     messages.unshift(newMsg);
-    currentPage = 1;
     render();
     nameEl.value = "";
     msgEl.value = "";
@@ -422,6 +427,12 @@
   }
 
   if (submitEl) submitEl.addEventListener("click", submit);
+
+  if (moreEl)
+    moreEl.addEventListener("click", function () {
+      listEl.classList.remove("gb-collapsed");
+      moreEl.style.display = "none";
+    });
 
   loadMessages();
 })();

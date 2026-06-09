@@ -104,14 +104,47 @@ section {
 
 /* ===== 1. 표지 ===== */
 .cover {
-  padding-top: 12px;
+  padding-top: 0;
+}
+.cover-top {
+  background: radial-gradient(170% 100% at top right, #febf7c, #ffffff);
+  margin: -28px calc(-1 * var(--pad)) 8px;
+  padding: 28px var(--pad) 1px;
+}
+.cover-top .cover-since,
+.cover-top .cover-since-date,
+.cover-top .cover-since-num,
+.cover-top .cover-wedding-of {
+  color: #000;
+}
+.cover-since {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Do Hyeon", sans-serif;
+  color: #333;
+  margin-bottom: 14px;
+}
+.cover-since-date {
+  font-size: 15px;
+  white-space: nowrap;
+}
+.cover-since-num {
+  font-size: 15px;
 }
 .cover-wedding-of {
-  font-family: "Dekko", cursive;
-  font-size: 26px;
+  font-family: "Black Han Sans", sans-serif;
+  font-size: 32px;
   letter-spacing: 2px;
   color: #000000;
   text-align: center;
+}
+.cover-couple {
+  font-family: "Black Han Sans", sans-serif;
+  font-size: 17px;
+  color: #000;
+  text-align: center;
+  margin-top: 2px;
 }
 .cover-flower-wrap {
   position: relative;
@@ -120,13 +153,50 @@ section {
   margin: 14px auto 0;
 }
 .cover-info {
-  font-family: "Dongle", sans-serif;
-  font-weight: 400;
-  font-size: 26px;
-  line-height: 1.2;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
   color: #000;
   text-align: center;
   margin-top: 10px;
+}
+.cover-invite {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #000;
+  text-align: center;
+  margin-top: 60px;
+}
+.cover-main {
+  display: block;
+  width: 50%;
+  height: auto;
+  margin: 0 auto 18px;
+  border-radius: 6px;
+}
+.cover-trio {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  margin: 18px calc(-1 * var(--pad));
+  transform: scale(1.15);
+  transform-origin: center;
+}
+.cover-trio img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.cover-trio .cover-trio-main {
+  position: relative;
+  z-index: 2;
+}
+.cover-trio img:first-child {
+  transform: translateX(36px);
+}
+.cover-trio img.flip {
+  transform: scaleX(-1) translateY(-40px) translateX(36px);
 }
 .cover-flower {
   display: block;
@@ -196,12 +266,16 @@ section {
   height: auto;
   margin: 0 auto 24px;
 }
+.greeting-text-img[src*="courple"] {
+  width: 88%;
+  max-width: 360px;
+}
 .greeting-deco {
-  margin: 6px 0 24px;
+  margin: 6px 0 -30px;
 }
 
 .greeting-deco img {
-  width: 84px;
+  width: 150px;
   height: auto;
   display: inline-block;
 }
@@ -228,6 +302,7 @@ section {
   font-family: "HsGlidingSerif", serif;
   font-size: 17px;
   margin-top: 14px;
+  white-space: nowrap;
 }
 .greeting-signature span {
   font-family: "Nanum Square", sans-serif;
@@ -241,7 +316,7 @@ section {
   font-weight: 700;
 }
 .sign-name {
-  height: 60px;
+  height: 46px;
   width: auto;
   vertical-align: middle;
 }
@@ -358,7 +433,19 @@ section {
   margin: 0 auto 12px;
 }
 .quad-flower.quad-flower--left {
+  width: 90px;
   margin: 0 auto 10px 0;
+}
+.quad-flower--left[src*="l-flower"] {
+  transform: translateX(20px);
+}
+.quad-flower[src*="s-flower1"] {
+  width: 38px;
+  transform: translateX(40px);
+}
+.quad-flower.quad-flower--right[src*="s-flower2"] {
+  transform: translateX(-40px);
+  margin-top: 60px;
 }
 .quad-flower.quad-flower--right {
   margin: 0 0 10px auto;
@@ -379,7 +466,7 @@ section {
   display: block;
 }
 .gallery-trio .trio-cell img.smail-down {
-  margin-top: 150px;
+  margin-top: 120px;
 }
 .gallery-trio--ratio {
   grid-template-columns: 2.5fr 3.5fr 4fr;
@@ -392,14 +479,15 @@ section {
   width: 38%;
   max-width: 150px;
   height: auto;
-  margin: 44px auto 44px 0;
+  margin: 44px auto;
 }
 .gallery-quad {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  margin-bottom: 20px;
+  width: 84%;
+  margin: 0 auto 20px;
 }
 .quad-flower {
   display: block;
@@ -427,7 +515,7 @@ section {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
-  width: 40%;
+  width: 55%;
   margin: 0 auto;
 }
 .gallery-item {
@@ -445,9 +533,9 @@ section {
 }
 .gallery-item .gallery-birds {
   position: absolute;
-  right: -65px;
-  bottom: -70px;
-  width: 84px;
+  right: -90px;
+  bottom: -45px;
+  width: 130px;
   height: auto;
   object-fit: contain;
   border-radius: 0;
@@ -456,8 +544,9 @@ section {
 }
 .gallery-item .gallery-heart {
   right: auto;
-  left: -60px;
-  bottom: -55px;
+  left: -70px;
+  bottom: -105px;
+  transform: rotate(-18deg);
 }
 
 /* ===== 5. 캘린더 ===== */
@@ -503,6 +592,7 @@ section {
   list-style: none;
   display: block;
   text-align: left;
+  font-size: 13px;
 }
 .cal-times li {
   display: flex;
@@ -517,7 +607,7 @@ section {
   font-weight: 400;
 }
 .calendar-table {
-  width: 86%;
+  width: 53%;
   margin: 0 auto;
   border-collapse: collapse;
   font-size: 16px;
@@ -541,11 +631,13 @@ section {
   left: 100%;
   top: 0;
   transform: translate(-50%, -50%);
-  width: 34px;
+  width: 90px;
+  margin-top: -5px;
+  margin-left: 10px;
   height: auto;
   pointer-events: none;
 }
-.day-mark::after {
+td.day-mark::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -663,7 +755,7 @@ section {
 }
 .account-cols {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 14px;
 }
 .account-side {
@@ -671,21 +763,25 @@ section {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 12px;
+  text-align: left;
+}
+.account-side::before {
+  content: "•";
+  margin-right: 6px;
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 }
 .account-card {
-  aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
+  gap: 14px;
   border-radius: 6px;
-  padding: 10px;
+  padding: 14px 14px;
   margin-bottom: 14px;
-  font-family: "TlabDotumCon", sans-serif;
+  font-family: "Nanum Square", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
+  text-align: left;
 }
 .account-card.groom {
   background: #d9f4ce;
@@ -693,36 +789,50 @@ section {
 .account-card.bride {
   background: #fff3c3;
 }
-.account-card .acc-bank {
-  font-size: 13px;
-  color: #777;
-}
-.account-card .acc-row {
+.account-card .acc-top {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin: 2px 0;
+  justify-content: space-between;
+  gap: 8px;
+}
+.account-card .acc-role {
+  font-size: 15px;
+  color: #333;
+}
+.account-card .acc-name {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+}
+.account-card .acc-bottom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.account-card .acc-bottom.copied,
+.account-card .acc-bottom.copied .acc-bank,
+.account-card .acc-bottom.copied .acc-number,
+.account-card .acc-bottom.copied .copy-btn {
+  color: #e0573e;
+}
+.account-card .acc-bank {
+  font-size: 15px;
+  color: #333;
 }
 .account-card .acc-number {
   font-weight: 400;
   word-break: break-all;
-}
-.account-card .acc-name {
-  font-size: 13px;
-  color: #555;
+  color: #333;
 }
 .copy-btn {
   flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
   padding: 0;
   border: none;
   background: transparent;
-  color: #555;
+  color: #333;
+  font-family: "Nanum Square", sans-serif;
+  font-size: 15px;
+  text-decoration: none;
   cursor: pointer;
   transition: color 0.15s ease;
 }
@@ -730,7 +840,7 @@ section {
   color: #222;
 }
 .copy-btn:active {
-  transform: scale(0.92);
+  transform: scale(0.96);
 }
 
 /* 복사 완료 토스트 팝업 */
@@ -767,35 +877,97 @@ section {
   font-weight: 400;
 }
 .guestbook-list {
+  position: relative;
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.gb-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.guestbook-list.gb-collapsed {
+  max-height: 520px;
+  overflow: hidden;
+}
+/* 접혔을 때 아래쪽 페이드 */
+.guestbook-list.gb-collapsed::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 70px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+  pointer-events: none;
 }
 .guestbook-item {
-  border-bottom: 1px solid #eee;
-  padding: 14px 4px;
-}
-.gb-name {
-  font-family: "Nanum Square", sans-serif;
-  font-weight: 700;
-  font-size: 15px;
-  margin-bottom: 6px;
+  padding: 16px;
+  background: #eef4e2;
 }
 .gb-msg {
   font-family: "Nanum Square", sans-serif;
   font-weight: 400;
   font-size: 15px;
-  margin-bottom: 6px;
+  line-height: 1.5;
+  color: #444;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
+  line-clamp: 8;
+  overflow: hidden;
+}
+.guestbook-item.expanded .gb-msg {
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  overflow: visible;
+}
+.guestbook-item {
+  cursor: pointer;
+}
+.gb-name {
+  font-family: "Nanum Square", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #333;
 }
 .gb-date {
   font-family: "Nanum Square", sans-serif;
   font-weight: 400;
-  font-size: 12px;
-  color: #aaa;
+  font-size: 11px;
+  color: #999;
+  margin-top: 2px;
+}
+.gb-more {
+  display: block;
+  width: 100%;
+  border: none;
+  background: #fdf6e3;
+  color: #555;
+  font-family: "Nanum Square", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.gb-more:hover {
+  background: #f6edd2;
 }
 .gb-state {
+  width: 100%;
   text-align: center;
   color: #aaa;
   font-size: 14px;
+  font-family: "Nanum Square", sans-serif;
   padding: 24px 0;
 }
 
@@ -838,9 +1010,41 @@ section {
 
 .guestbook-write {
   border: 1px solid #e3e3e3;
-  border-radius: 8px;
   padding: 12px;
   text-align: left;
+}
+/* 한 줄 작성 폼 (이름 | 메시지 | 보내기) */
+.gb-write-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  padding: 0;
+  margin-bottom: 22px;
+}
+.gb-write-row .gb-name-input {
+  flex: 0 0 76px;
+  width: 76px;
+  min-width: 0;
+  margin-bottom: 0;
+  border: 1px solid #e9f4be;
+  padding: 10px 10px;
+  font-family: "Nanum Square", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  background: #fff;
+  outline: none;
+}
+.gb-write-row .gb-msg-input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #e9f4be;
+  padding: 10px 12px;
+  font-family: "Nanum Square", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  background: #fff;
+  outline: none;
 }
 .gb-name-input {
   width: 100%;
@@ -877,20 +1081,25 @@ section {
   color: #aaa;
 }
 .gb-submit-btn {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   padding: 0;
   border: none;
-  border-radius: 50%;
-  background: var(--green);
-  color: #fff;
+  border-radius: 10px;
+  background: #fcf3ce;
   cursor: pointer;
   transition:
     opacity 0.15s ease,
     transform 0.1s ease;
+}
+.gb-submit-btn img {
+  width: 28px;
+  height: auto;
+  display: block;
 }
 .gb-submit-btn:hover {
   opacity: 0.88;
@@ -914,15 +1123,19 @@ section {
     padding: 24px 0;
   }
   .calendar-table {
-    font-size: 15px;
-    width: 94%;
+    font-size: 13px;
+    width: 53%;
+  }
+  td.day-mark::after {
+    width: 24px;
+    height: 24px;
   }
   .parent-photo {
     width: 132px;
     height: 158px;
   }
   .account-card {
-    padding: 14px 6px;
+    padding: 16px 16px;
     font-size: 13px;
   }
   .account-cols {
@@ -941,7 +1154,7 @@ section {
   }
   .account-card {
     font-size: 12px;
-    padding: 12px 4px;
+    padding: 14px 14px;
   }
   .account-side {
     font-size: 16px;
@@ -964,5 +1177,12 @@ section {
 @media (max-height: 620px) {
   .invitation {
     min-height: 100%;
+  }
+}
+
+/* 모바일에서 smail 위 간격 조정 */
+@media (max-width: 430px) {
+  .gallery-trio .trio-cell img.smail-down {
+    margin-top: 90px;
   }
 }
