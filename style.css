@@ -102,11 +102,21 @@ body {
 .fab-stack {
   position: fixed;
   bottom: 20px;
-  right: max(16px, calc(50% - 215px + 16px));
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto; /* 카드와 동일하게 중앙정렬 → 항상 카드 안쪽에 위치 */
+  padding-right: 16px;
   z-index: 50;
   display: flex;
   flex-direction: column;
+  align-items: flex-end; /* 버튼을 오른쪽으로 */
   gap: 10px;
+  pointer-events: none; /* 빈 영역은 클릭 통과 */
+}
+.fab-stack .fab-btn {
+  pointer-events: auto; /* 버튼은 클릭 가능 */
 }
 
 .fab-btn {
@@ -1382,6 +1392,10 @@ td.day-mark::after {
     min-height: auto;
     border-radius: 4px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  }
+  /* 카드가 위아래 24px 띄워져 있으므로, 버튼이 카드 밖으로 나오지 않게 하단 간격 확보 */
+  .fab-stack {
+    bottom: 40px;
   }
 }
 

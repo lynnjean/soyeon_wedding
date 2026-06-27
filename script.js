@@ -17,7 +17,10 @@
   function play() {
     audio
       .play()
-      .then(() => toggle.classList.add("playing"))
+      .then(() => {
+        started = true;
+        toggle.classList.add("playing");
+      })
       .catch(() => toggle.classList.remove("playing"));
   }
   function pause() {
@@ -31,6 +34,9 @@
     if (audio.paused) play();
     else pause();
   });
+
+  // 접속 즉시 자동재생 시도 (브라우저가 차단하면 아래 첫 상호작용 폴백으로 재생)
+  play();
 
   // 첫 화면 터치/클릭 시 자동 재생 시도 (브라우저 자동재생 정책 대응)
   function autoStart(e) {
