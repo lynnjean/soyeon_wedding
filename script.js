@@ -5,7 +5,14 @@
   if (!audio || !toggle) return;
 
   audio.volume = 0.5;
+  audio.loop = true; // 끝나면 연속 재생
   let started = false;
+
+  // loop 속성이 무시되는 환경 대비: 끝나면 처음부터 다시 재생
+  audio.addEventListener("ended", function () {
+    audio.currentTime = 0;
+    play();
+  });
 
   function play() {
     audio
@@ -131,7 +138,7 @@
   (function () {
     const galleryImgs = Array.from(
       document.querySelectorAll(
-        ".gallery-zoom, .gallery-quad img:not(.quad-flower), .gallery-item img:not(.gallery-birds)",
+        ".cover-trio-main, .greeting-text-img[src*=\"5-1\"], .gallery-zoom:not([src*=\"_07\"]), .gallery-quad img:not(.quad-flower), .gallery-item img:not(.gallery-birds)",
       ),
     );
     const coverImgs = Array.from(document.querySelectorAll(".cover-photo img"));
@@ -474,4 +481,90 @@
     });
 
   loadMessages();
+})();
+
+// ===== 오른쪽 하단 플로팅 버튼 (맨 위로 / 링크 공유) =====
+(function () {
+  // 클립보드 복사 (Clipboard API → 실패 시 execCommand 폴백)
+  async function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (e) {
+        /* 폴백으로 진행 */
+      }
+    }
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try {
+      ok = document.execCommand("copy");
+    } catch (e) {
+      ok = false;
+    }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  // 토스트 팝업
+  let toastTimer = null;
+  function showToast(message) {
+    let toast = document.querySelector(".copy-toast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.className = "copy-toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    void toast.offsetWidth;
+    toast.classList.add("show");
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toast.classList.remove("show");
+    }, 2000);
+  }
+
+  // ===== 맨 위로 이동 =====
+  const topBtn = document.getElementById("fabTop");
+  if (topBtn) {
+    function toggleTopBtn() {
+      if (window.scrollY > 300) topBtn.classList.add("show");
+      else topBtn.classList.remove("show");
+    }
+    window.addEventListener("scroll", toggleTopBtn, { passive: true });
+    toggleTopBtn();
+    topBtn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  // ===== 링크 공유 =====
+  const shareBtn = document.getElementById("fabShare");
+  if (shareBtn) {
+    shareBtn.addEventListener("click", async function () {
+      const url = window.location.href;
+      const title = document.title;
+      // Web Share API 지원 시 네이티브 공유 사용
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: title, url: url });
+          return;
+        } catch (e) {
+          // 사용자가 취소했거나 미지원 → 클립보드 폴백
+          if (e && e.name === "AbortError") return;
+        }
+      }
+      const ok = await copyText(url);
+      showToast(
+        ok
+          ? "링크가 복사되었습니다."
+          : "링크 복사에 실패했습니다. 다시 시도해 주세요.",
+      );
+    });
+  }
 })();

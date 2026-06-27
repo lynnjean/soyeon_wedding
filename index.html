@@ -39,21 +39,41 @@
       href="https://fonts.googleapis.com/css2?family=Antic&family=Dekko&family=Dongle:wght@400;700&family=Gaegu:wght@400;700&family=Jua&family=Do+Hyeon&family=Black+Han+Sans&family=Gothic+A1:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=168" />
+    <link rel="stylesheet" href="style.css?v=173" />
   </head>
   <body>
     <!-- 모바일 청첩장: PC에서도 모바일 폭으로 고정 -->
     <main class="invitation">
       <!-- 배경 음악 -->
       <audio id="bgm" src="./audio/bgm.mp3" loop preload="auto"></audio>
-      <button
-        class="bgm-toggle"
-        id="bgmToggle"
-        type="button"
-        aria-label="배경 음악 켜기/끄기"
-      >
-        <span class="bgm-icon">♪</span>
-      </button>
+
+      <!-- 오른쪽 하단 플로팅 버튼들 -->
+      <div class="fab-stack">
+        <button
+          class="fab-btn fab-top"
+          id="fabTop"
+          type="button"
+          aria-label="맨 위로 이동"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+        </button>
+        <button
+          class="fab-btn fab-share"
+          id="fabShare"
+          type="button"
+          aria-label="링크 공유하기"
+        >
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
+        </button>
+        <button
+          class="bgm-toggle fab-btn"
+          id="bgmToggle"
+          type="button"
+          aria-label="배경 음악 켜기/끄기"
+        >
+          <span class="bgm-icon">♪</span>
+        </button>
+      </div>
       <!-- 실제 내용 -->
       <div class="content">
         <!-- 1. 표지 -->
@@ -91,20 +111,20 @@
         <section class="gallery">
           <div class="gallery-trio gallery-trio--top">
             <div class="trio-cell">
-              <img
+              <img loading="lazy" decoding="async"
                 class="gallery-zoom"
                 src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/2-1.jpg"
                 alt="장식"
               />
             </div>
             <div class="trio-cell">
-              <img
+              <img loading="lazy" decoding="async"
                 class="gallery-zoom"
                 src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/2-2.jpg"
                 alt="장식"
               />
             </div>
-            <img
+            <img loading="lazy" decoding="async"
               class="quad-flower quad-flower--left"
               src="./img/s-flower1.png"
               alt="꽃 장식"
@@ -112,50 +132,50 @@
           </div>
           <div class="gallery-duo">
             <div class="duo-item">
-              <img class="duo-leaf" src="./img/leaf.png" alt="잎 장식" />
-              <img
+              <img loading="lazy" decoding="async" class="duo-leaf" src="./img/leaf.png" alt="잎 장식" />
+              <img loading="lazy" decoding="async"
                 class="gallery-zoom"
                 src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/2-4.jpg"
                 alt="갤러리 사진"
               />
             </div>
             <div class="duo-item">
-              <img
+              <img loading="lazy" decoding="async"
                 class="gallery-zoom"
                 src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/2-3.jpg"
                 alt="갤러리 사진"
               />
-              <img
+              <img loading="lazy" decoding="async"
                 class="gallery-zoom"
                 src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/2-5.jpg"
                 alt="갤러리 사진"
               />
             </div>
           </div>
-          <img
+          <img loading="lazy" decoding="async"
             class="quad-flower quad-flower--left"
             src="./img/s-flower1.png"
             alt="꽃 장식"
           />
           <div class="gallery-trio3">
-            <img
+            <img loading="lazy" decoding="async"
               class="gallery-zoom"
               src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/3-1.jpg"
               alt="갤러리 사진"
             />
-            <img
+            <img loading="lazy" decoding="async"
               class="gallery-zoom"
               src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/3-2.jpg"
               alt="갤러리 사진"
             />
-            <img
+            <img loading="lazy" decoding="async"
               class="gallery-zoom"
               src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/3-3.jpg"
               alt="갤러리 사진"
             />
           </div>
 
-          <img
+          <img loading="lazy" decoding="async"
             class="quad-flower quad-flower--right"
             src="./img/s-flower2.png"
             alt="꽃 장식"
@@ -163,19 +183,19 @@
 
           <div class="gallery-duo gallery-duo--2to1">
             <div class="duo-item">
-              <img
+              <img loading="lazy" decoding="async"
                 class="gallery-zoom"
                 src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/3-4.jpg"
                 alt="갤러리 사진"
               />
-              <img
+              <img loading="lazy" decoding="async"
                 class="gallery-zoom"
                 src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/3-5.jpg"
                 alt="갤러리 사진"
               />
             </div>
             <div class="duo-item">
-              <img
+              <img loading="lazy" decoding="async"
                 class="gallery-zoom"
                 src="./1 모바일 청첩장 제작/01 모청 낙서들 원본/KakaoTalk_20260606_110452742_07.jpg"
                 alt="갤러리 사진"
@@ -184,25 +204,25 @@
           </div>
           <div class="gallery-grid">
             <div class="gallery-item">
-              <img
+              <img loading="lazy" decoding="async"
                 src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/4-1.jpg"
                 alt="웨딩 사진 1"
               />
-              <img class="gallery-birds" src="./img/birds.png" alt="새 장식" />
+              <img loading="lazy" decoding="async" class="gallery-birds" src="./img/birds.png" alt="새 장식" />
             </div>
             <div class="gallery-item">
-              <img
+              <img loading="lazy" decoding="async"
                 src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/4-2.jpg"
                 alt="웨딩 사진 2"
               />
-              <img
+              <img loading="lazy" decoding="async"
                 class="gallery-birds gallery-heart"
                 src="./img/heart.png"
                 alt="하트"
               />
             </div>
             <div class="gallery-item">
-              <img
+              <img loading="lazy" decoding="async"
                 src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/4-3.jpg"
                 alt="웨딩 사진 3"
               />
@@ -213,22 +233,22 @@
         <!-- 3. 초대글 -->
         <section class="greeting">
           <div class="greeting-deco">
-            <img src="./img/letter.jpeg" alt="편지" />
+            <img loading="lazy" decoding="async" src="./img/letter.jpeg" alt="편지" />
           </div>
-          <img class="greeting-text-img" src="./img/text.png" alt="초대 문구" />
-          <img
+          <img loading="lazy" decoding="async" class="greeting-text-img" src="./img/text.png" alt="초대 문구" />
+          <img loading="lazy" decoding="async"
             class="greeting-text-img"
             src="./1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/5-1.jpg"
             alt="커플사진"
           />
           <p class="greeting-signature">
-            <span>신랑</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
+            <span>신랑</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img loading="lazy" decoding="async"
               class="sign-name"
               src="./img/song.png"
               alt="송제경"
             />
             &nbsp;&nbsp;&nbsp;
-            <span>신부</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
+            <span>신부</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img loading="lazy" decoding="async"
               class="sign-name"
               src="./img/so.png"
               alt="김소연"
@@ -240,7 +260,7 @@
         <section class="parents">
           <div class="parent-block">
             <div class="parent-photo">
-              <img src="./img/baby-man.png" alt="신랑 아기 사진" />
+              <img loading="lazy" decoding="async" src="./img/baby-man.png" alt="신랑 아기 사진" />
             </div>
             <p class="parent-line">송영관 · 정운희 의 &nbsp; 아들</p>
             <p class="parent-name">송 제 경</p>
@@ -248,7 +268,7 @@
 
           <div class="parent-block">
             <div class="parent-photo">
-              <img src="./img/baby-woman.png" alt="신부 아기 사진" />
+              <img loading="lazy" decoding="async" src="./img/baby-woman.png" alt="신부 아기 사진" />
             </div>
             <p class="parent-line">김호철 · 홍미숙 의 &nbsp; 딸</p>
             <p class="parent-name">김 소 연</p>
@@ -268,7 +288,7 @@
                 <th>목</th>
                 <th>금</th>
                 <th class="day-mark">
-                  <img class="day-ring" src="./img/ring.png" alt="반지" />토
+                  <img loading="lazy" decoding="async" class="day-ring" src="./img/ring.png" alt="반지" />토
                 </th>
               </tr>
             </thead>
@@ -476,7 +496,7 @@
               type="button"
               aria-label="보내기"
             >
-              <img src="./img/send.png" alt="보내기" />
+              <img loading="lazy" decoding="async" src="./img/send.png" alt="보내기" />
             </button>
           </div>
           <div class="guestbook-list" id="gbList"></div>
@@ -487,6 +507,6 @@
 
     <!-- 네이버 지도 API: YOUR_CLIENT_ID 부분을 발급받은 Client ID로 교체하세요 -->
     <script src="./https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=dac7qaqqh8"></script>
-    <script src="./script.js?v=168"></script>
+    <script src="./script.js?v=172"></script>
   </body>
 </html>
