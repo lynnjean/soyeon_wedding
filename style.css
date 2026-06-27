@@ -913,7 +913,7 @@ td.day-mark::after {
   font-family: "Nanum Square", sans-serif;
   font-weight: 400;
   color: #000;
-  margin: 0 0 6px;
+  margin: 30px 0;
 }
 .location-detail .detail-bus strong {
   font-weight: 700;
