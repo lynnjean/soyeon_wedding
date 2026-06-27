@@ -7,80 +7,129 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <title>송제경 ♡ 김소연 결혼합니다</title>
+    <meta
+      name="description"
+      content="송제경 ♡ 김소연 결혼합니다. 2026년 9월 5일 토요일 오후 1시, 아젠토피오레 1층"
+    />
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="apple-touch-icon" href="img/favicon.png" />
+
+    <!-- 링크 공유 썸네일 (Open Graph / 카카오톡 등) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="송제경 ♡ 김소연 결혼합니다" />
+    <meta
+      property="og:description"
+      content="2026년 9월 5일 토요일 오후 1시, 아젠토피오레 1층"
+    />
+    <meta property="og:image" content="img/og-thumbnail.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- 트위터 카드 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="송제경 ♡ 김소연 결혼합니다" />
+    <meta
+      name="twitter:description"
+      content="2026년 9월 5일 토요일 오후 1시, 아젠토피오레 1층"
+    />
+    <meta name="twitter:image" content="img/og-thumbnail.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Antic&family=Dekko&family=Dongle:wght@400;700&family=Gaegu:wght@400;700&family=Jua&family=Do+Hyeon&family=Black+Han+Sans&family=Gothic+A1:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=110" />
+    <link rel="stylesheet" href="style.css?v=168" />
   </head>
   <body>
     <!-- 모바일 청첩장: PC에서도 모바일 폭으로 고정 -->
     <main class="invitation">
+      <!-- 배경 음악 -->
+      <audio id="bgm" src="audio/bgm.mp3" loop preload="auto"></audio>
+      <button
+        class="bgm-toggle"
+        id="bgmToggle"
+        type="button"
+        aria-label="배경 음악 켜기/끄기"
+      >
+        <span class="bgm-icon">♪</span>
+      </button>
       <!-- 실제 내용 -->
       <div class="content">
         <!-- 1. 표지 -->
         <section class="cover">
           <div class="cover-top">
-            <img
-              class="cover-main"
-              src="img/main-heart.png"
-              alt="신랑신부 메인 사진"
-            />
             <div class="cover-since">
               <span class="cover-since-date">Since January 12, 2019</span>
               <span class="cover-since-num">8th</span>
             </div>
-            <p class="cover-wedding-of">THE WEDDING OF</p>
+            <img
+              class="cover-doodle"
+              src="1 모바일 청첩장 제작/01 모청 낙서들 원본/KakaoTalk_20260606_110452742_06-removebg-preview.jpeg"
+              alt="낙서 장식"
+            />
+            <p class="cover-wedding-of">
+              송제경과 김소연의 결혼식에 초대합니다.<br />저희 두 사람의 새로운
+              시작에 함께해 주세요.
+            </p>
           </div>
-          <p class="cover-couple">Song je gyeong ♡ Kim so yeon</p>
           <div class="cover-trio">
-            <img src="img/l-flower.jpeg" alt="꽃 장식" />
             <img
               class="cover-trio-main"
-              src="img/main.png"
+              src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/1.jpg"
               alt="신랑신부 메인 사진"
             />
-            <img class="flip" src="img/l-flower.jpeg" alt="꽃 장식" />
           </div>
           <p class="cover-info">
-            2026/ 09/ 05 토요일 13:00<br />아젠토피오레 1층
-          </p>
-          <p class="cover-invite">
-            Inviting you to the wedding. Join us our life cycle.
+            jegyeong & soyeon<br />
+            save the date<br />
+            2026.09.05.
           </p>
         </section>
 
         <!-- 4. 갤러리 -->
         <section class="gallery">
-          <img class="gallery-f1 gallery-zoom" src="img/f-1.png" alt="장식" />
-          <img
-            class="quad-flower quad-flower--left"
-            src="img/l-flower.jpeg"
-            alt="꽃 장식"
-          />
           <div class="gallery-trio gallery-trio--top">
             <div class="trio-cell">
-              <img class="gallery-zoom" src="img/f-2.png" alt="장식" />
+              <img
+                class="gallery-zoom"
+                src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/2-1.jpg"
+                alt="장식"
+              />
             </div>
             <div class="trio-cell">
-              <img class="gallery-zoom" src="img/f-3.png" alt="장식" />
+              <img
+                class="gallery-zoom"
+                src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/2-2.jpg"
+                alt="장식"
+              />
             </div>
-            <div class="trio-cell"></div>
+            <img
+              class="quad-flower quad-flower--left"
+              src="img/s-flower1.png"
+              alt="꽃 장식"
+            />
           </div>
-          <img
-            class="quad-flower quad-flower--right"
-            src="img/leaf.png"
-            alt="잎 장식"
-          />
-          <div class="gallery-trio gallery-trio--ratio">
-            <div class="trio-cell"></div>
-            <div class="trio-cell">
-              <img class="smail-down" src="img/smail.jpeg" alt="장식" />
+          <div class="gallery-duo">
+            <div class="duo-item">
+              <img class="duo-leaf" src="img/leaf.png" alt="잎 장식" />
+              <img
+                class="gallery-zoom"
+                src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/2-4.jpg"
+                alt="갤러리 사진"
+              />
             </div>
-            <div class="trio-cell">
-              <img class="gallery-zoom" src="img/f-4.png" alt="장식" />
+            <div class="duo-item">
+              <img
+                class="gallery-zoom"
+                src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/2-3.jpg"
+                alt="갤러리 사진"
+              />
+              <img
+                class="gallery-zoom"
+                src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/2-5.jpg"
+                alt="갤러리 사진"
+              />
             </div>
           </div>
           <img
@@ -88,29 +137,64 @@
             src="img/s-flower1.png"
             alt="꽃 장식"
           />
+          <div class="gallery-trio3">
+            <img
+              class="gallery-zoom"
+              src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/3-1.jpg"
+              alt="갤러리 사진"
+            />
+            <img
+              class="gallery-zoom"
+              src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/3-2.jpg"
+              alt="갤러리 사진"
+            />
+            <img
+              class="gallery-zoom"
+              src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/3-3.jpg"
+              alt="갤러리 사진"
+            />
+          </div>
+
           <img
             class="quad-flower quad-flower--right"
             src="img/s-flower2.png"
             alt="꽃 장식"
           />
-          <div class="gallery-quad">
-            <img src="img/p-1.png" alt="갤러리 1" />
-            <img src="img/p-2.png" alt="갤러리 2" />
-            <img src="img/p-3.png" alt="갤러리 3" />
-            <img src="img/p-4.png" alt="갤러리 4" />
+
+          <div class="gallery-duo gallery-duo--2to1">
+            <div class="duo-item">
+              <img
+                class="gallery-zoom"
+                src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/3-4.jpg"
+                alt="갤러리 사진"
+              />
+              <img
+                class="gallery-zoom"
+                src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/3-5.jpg"
+                alt="갤러리 사진"
+              />
+            </div>
+            <div class="duo-item">
+              <img
+                class="gallery-zoom"
+                src="1 모바일 청첩장 제작/01 모청 낙서들 원본/KakaoTalk_20260606_110452742_07.jpg"
+                alt="갤러리 사진"
+              />
+            </div>
           </div>
-          <img
-            class="gallery-sep"
-            src="img/cake-bird.jpeg"
-            alt="케이크와 새 장식"
-          />
           <div class="gallery-grid">
             <div class="gallery-item">
-              <img src="photos/photo1.jpeg" alt="웨딩 사진 1" />
+              <img
+                src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/4-1.jpg"
+                alt="웨딩 사진 1"
+              />
               <img class="gallery-birds" src="img/birds.png" alt="새 장식" />
             </div>
             <div class="gallery-item">
-              <img src="photos/photo2.jpeg" alt="웨딩 사진 2" />
+              <img
+                src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/4-2.jpg"
+                alt="웨딩 사진 2"
+              />
               <img
                 class="gallery-birds gallery-heart"
                 src="img/heart.png"
@@ -118,7 +202,10 @@
               />
             </div>
             <div class="gallery-item">
-              <img src="photos/photo3.jpeg" alt="웨딩 사진 3" />
+              <img
+                src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/4-3.jpg"
+                alt="웨딩 사진 3"
+              />
             </div>
           </div>
         </section>
@@ -129,7 +216,11 @@
             <img src="img/letter.jpeg" alt="편지" />
           </div>
           <img class="greeting-text-img" src="img/text.png" alt="초대 문구" />
-          <img class="greeting-text-img" src="img/courple.png" alt="커플사진" />
+          <img
+            class="greeting-text-img"
+            src="1 모바일 청첩장 제작/00 모청 사진 원본/00 모청 사진 선택/5-1.jpg"
+            alt="커플사진"
+          />
           <p class="greeting-signature">
             <span>신랑</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
               class="sign-name"
@@ -151,7 +242,7 @@
             <div class="parent-photo">
               <img src="img/baby-man.png" alt="신랑 아기 사진" />
             </div>
-            <p class="parent-line">송영관 · 정운희 장남</p>
+            <p class="parent-line">송영관 · 정운희 의 &nbsp; 아들</p>
             <p class="parent-name">송 제 경</p>
           </div>
 
@@ -159,7 +250,7 @@
             <div class="parent-photo">
               <img src="img/baby-woman.png" alt="신부 아기 사진" />
             </div>
-            <p class="parent-line">김호철 · 홍미숙 차녀</p>
+            <p class="parent-line">김호철 · 홍미숙 의 &nbsp; 딸</p>
             <p class="parent-name">김 소 연</p>
           </div>
         </section>
@@ -198,12 +289,12 @@
             <p class="cal-datetime">2026년 9월 5일 토요일 오후 1시</p>
             <ul class="cal-times">
               <li>
-                <span class="cal-label">본 식</span
+                <span class="cal-label">본&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;식</span
                 ><span class="cal-time">13:00</span>
               </li>
               <li>
-                <span class="cal-label">연회장</span
-                ><span class="cal-time">11:00 ~ 17:00</span>
+                <span class="cal-label">피&nbsp;로&nbsp;연</span
+                ><span class="cal-time">11:00 ~ 16:00</span>
               </li>
             </ul>
           </div>
@@ -222,25 +313,25 @@
           <div class="map-box" id="naverMap"></div>
           <p class="map-note">◍ 마커 클릭 시, 네이버 지도로 연결됩니다.</p>
           <div class="location-detail">
-            <p class="detail-head"><strong>버스 이용 시</strong></p>
-            <ul>
-              <li>월구마을 / 동성마을 정류장에서 하차</li>
-            </ul>
-            <p class="detail-head"><strong>주차 안내</strong></p>
+            <p class="detail-bus">
+              <strong>버스:</strong> 월구마을
+              <span class="sep">•</span> 동성마을 / 동산교 정류장 하차
+            </p>
+            <p class="detail-head"><strong>주차장</strong></p>
             <ul>
               <li>
-                제 1 주차장
-                <span class="lot-addr">아젠토피오레컨벤션 건물</span>
+                제1주차장(본관)
+                <span class="lot-addr">제주시 서광로 112</span>
               </li>
               <li>
-                제 2 주차장
-                <span class="lot-addr">오라이동 2228-1 (동성마을회관 옆)</span>
-              </li>
-              <li>
-                제 3 주차장
-                <span class="lot-addr"
-                  >서광로 124 (아젠토피오레 컨벤션 옆 건물)</span
+                제2주차장(동성마을회관 옆)
+                <span class="lot-addr lot-addr--break"
+                  >제주시 오라이동 2228-1</span
                 >
+              </li>
+              <li>
+                제3주차장(본관 옆 건물)
+                <span class="lot-addr">제주시 서광로 124</span>
               </li>
             </ul>
           </div>
@@ -396,6 +487,6 @@
 
     <!-- 네이버 지도 API: YOUR_CLIENT_ID 부분을 발급받은 Client ID로 교체하세요 -->
     <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=dac7qaqqh8"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=168"></script>
   </body>
 </html>

@@ -1,3 +1,42 @@
+// ===== 배경 음악 =====
+(function () {
+  const audio = document.getElementById("bgm");
+  const toggle = document.getElementById("bgmToggle");
+  if (!audio || !toggle) return;
+
+  audio.volume = 0.5;
+  let started = false;
+
+  function play() {
+    audio
+      .play()
+      .then(() => toggle.classList.add("playing"))
+      .catch(() => toggle.classList.remove("playing"));
+  }
+  function pause() {
+    audio.pause();
+    toggle.classList.remove("playing");
+  }
+
+  // 버튼 클릭으로 재생/정지
+  toggle.addEventListener("click", function () {
+    started = true;
+    if (audio.paused) play();
+    else pause();
+  });
+
+  // 첫 화면 터치/클릭 시 자동 재생 시도 (브라우저 자동재생 정책 대응)
+  function autoStart(e) {
+    if (started) return;
+    // 음악 버튼을 누른 경우는 click 핸들러가 처리하므로 제외
+    if (e && toggle.contains(e.target)) return;
+    started = true;
+    play();
+  }
+  window.addEventListener("pointerdown", autoStart, { once: true });
+  window.addEventListener("touchstart", autoStart, { once: true });
+})();
+
 // ===== 네이버 지도 (마커) =====
 (function () {
   const VENUE = {

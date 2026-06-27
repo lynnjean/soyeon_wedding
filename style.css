@@ -1,5 +1,33 @@
 /* ===== 폰트 ===== */
 @font-face {
+  font-family: "Hancom MalangMalang";
+  src: url("fonts/HancomMalangMalang-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hancom MalangMalang";
+  src: url("fonts/HancomMalangMalang-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Changwon Dangam Round";
+  src: url("fonts/ChangwonDangamRound.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EF Watermelon";
+  src: url("fonts/EF_watermelonSalad.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
   font-family: "HsGlidingSerif";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2604-1@1.0/HSHwalkongSerif-Regular.woff2")
     format("woff2");
@@ -46,7 +74,7 @@
 
 html,
 body {
-  background: #efeae0;
+  background: #ccd08e;
   color: var(--ink);
   font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Pretendard", sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -68,6 +96,38 @@ body {
   position: relative;
   z-index: 1;
   padding: 28px var(--pad);
+}
+
+/* ===== 배경 음악 토글 버튼 ===== */
+.bgm-toggle {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 50;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  color: #7a8a4f;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bgm-toggle .bgm-icon {
+  display: inline-block;
+}
+.bgm-toggle.playing .bgm-icon {
+  animation: bgm-spin 3s linear infinite;
+}
+@keyframes bgm-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 section {
@@ -107,7 +167,7 @@ section {
   padding-top: 0;
 }
 .cover-top {
-  background: radial-gradient(170% 100% at top right, #febf7c, #ffffff);
+  background: #ffffff;
   margin: -28px calc(-1 * var(--pad)) 8px;
   padding: 28px var(--pad) 1px;
 }
@@ -121,7 +181,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Do Hyeon", sans-serif;
+  font-family: "Hancom MalangMalang", sans-serif;
   color: #333;
   margin-bottom: 14px;
 }
@@ -132,12 +192,20 @@ section {
 .cover-since-num {
   font-size: 15px;
 }
+.cover-doodle {
+  display: block;
+  width: 25%;
+  max-width: 220px;
+  height: auto;
+  margin: 60px auto 10px;
+}
 .cover-wedding-of {
-  font-family: "Black Han Sans", sans-serif;
-  font-size: 32px;
+  font-family: "Changwon Dangam Round", sans-serif;
+  font-size: 13.5px;
   letter-spacing: 2px;
   color: #000000;
   text-align: center;
+  margin: 20px auto 30px;
 }
 .cover-couple {
   font-family: "Black Han Sans", sans-serif;
@@ -153,12 +221,13 @@ section {
   margin: 14px auto 0;
 }
 .cover-info {
-  font-family: "Do Hyeon", sans-serif;
-  font-size: 14px;
+  font-family: "Hancom MalangMalang", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
   line-height: 1.4;
   color: #000;
   text-align: center;
-  margin-top: 10px;
+  margin: 10px auto 50px;
 }
 .cover-invite {
   font-family: "Do Hyeon", sans-serif;
@@ -176,27 +245,21 @@ section {
   border-radius: 6px;
 }
 .cover-trio {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  display: flex;
   align-items: center;
-  margin: 18px calc(-1 * var(--pad));
-  transform: scale(1.15);
-  transform-origin: center;
+  justify-content: center;
+  margin: 18px 0;
 }
 .cover-trio img {
-  width: 100%;
   height: auto;
   display: block;
 }
 .cover-trio .cover-trio-main {
   position: relative;
   z-index: 2;
-}
-.cover-trio img:first-child {
-  transform: translateX(36px);
-}
-.cover-trio img.flip {
-  transform: scaleX(-1) translateY(-40px) translateX(36px);
+  width: 90%;
+  max-width: 300px;
+  margin: 0 auto;
 }
 .cover-flower {
   display: block;
@@ -226,7 +289,7 @@ section {
 }
 .parent-block {
   margin: 34px 0;
-  font-family: "Nanum Square", sans-serif;
+  font-family: "Changwon Dangam Round", sans-serif;
   font-weight: 400;
 }
 .parent-photo {
@@ -249,12 +312,12 @@ section {
   display: block;
 }
 .parent-line {
-  font-size: 16px;
+  font-size: 14px;
   color: #555;
   margin-bottom: 6px;
 }
 .parent-name {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
 }
 
@@ -305,7 +368,7 @@ section {
   white-space: nowrap;
 }
 .greeting-signature span {
-  font-family: "Nanum Square", sans-serif;
+  font-family: "Changwon Dangam Round", sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #777;
@@ -443,6 +506,9 @@ section {
   width: 38px;
   transform: translateX(40px);
 }
+.gallery-trio--top .quad-flower[src*="s-flower1"] {
+  transform: translate(0px, -40px);
+}
 .quad-flower.quad-flower--right[src*="s-flower2"] {
   transform: translateX(-40px);
   margin-top: 60px;
@@ -452,6 +518,78 @@ section {
 }
 .quad-flower--right {
   margin: 0 0 10px auto;
+}
+.gallery-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 40px auto 10px;
+  width: 90%;
+}
+.gallery-duo img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+.gallery-duo--2to1 {
+  grid-template-columns: 4fr 2fr;
+  width: 100%;
+}
+.gallery-duo--2to1 .duo-item .gallery-zoom + .gallery-zoom {
+  margin-top: 12px;
+}
+.gallery-trio3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin: 20px auto;
+}
+.gallery-trio3 img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+.duo-item {
+  position: relative;
+}
+.duo-item .gallery-zoom {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+.duo-item .gallery-zoom + .gallery-zoom {
+  margin-top: 24px;
+}
+.duo-item .gallery-zoom[src*="2-5"] {
+  width: 70%;
+  margin-top: 140px;
+  margin-left: 0;
+  margin-right: auto;
+}
+.duo-item .gallery-zoom[src*="_07"] {
+  width: 85%;
+  margin-top: 350px;
+  margin-left: -10px;
+  margin-right: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  height: auto;
+}
+.duo-item .gallery-zoom[src*="3-5"] {
+  aspect-ratio: auto;
+  object-fit: contain;
+  height: auto;
+}
+.gallery-duo .duo-leaf {
+  display: block;
+  width: 40px;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  margin: 120px 0 8px auto;
 }
 .gallery-trio {
   display: grid;
@@ -516,7 +654,7 @@ section {
   grid-template-columns: 1fr;
   gap: 10px;
   width: 55%;
-  margin: 0 auto;
+  margin: 100px auto 20px;
 }
 .gallery-item {
   position: relative;
@@ -578,21 +716,38 @@ section {
   margin-bottom: 14px;
 }
 .calendar-detail {
+  position: relative;
   display: inline-block;
   text-align: left;
   margin-top: 44px;
   font-size: 15px;
+  padding: 32px 40px;
+  background-color: #f6e4e5;
+}
+.calendar-detail-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  max-width: none;
+  height: auto;
+  z-index: -1;
+  pointer-events: none;
 }
 .cal-datetime {
-  font-family: "Nanum Square", sans-serif;
+  font-family: "Hancom MalangMalang", sans-serif;
   font-weight: 700;
+  font-size: 20px;
+  white-space: nowrap;
   margin-bottom: 12px;
 }
 .cal-times {
   list-style: none;
   display: block;
   text-align: left;
-  font-size: 13px;
+  font-size: 17px;
+  font-family: "Changwon Dangam Round", sans-serif;
 }
 .cal-times li {
   display: flex;
@@ -652,6 +807,10 @@ td.day-mark::after {
 }
 
 /* ===== 6. 오시는 길 ===== */
+.location {
+  padding-left: 16px;
+  padding-right: 16px;
+}
 .addr-row {
   display: flex;
   align-items: center;
@@ -668,16 +827,17 @@ td.day-mark::after {
   white-space: nowrap;
 }
 .location .section-title {
-  font-family: "Nanum Square", sans-serif;
+  font-family: "EF Watermelon", sans-serif;
   font-weight: 400;
 }
 .location-addr p {
   font-size: 16px;
   line-height: 1.6;
 }
-.addr-strong {
-  font-family: "Nanum Square", sans-serif;
+.location-addr .addr-strong {
+  font-family: "Hancom MalangMalang", sans-serif;
   font-weight: 700;
+  font-size: 22px;
 }
 .addr-road {
   font-family: "Nanum Square", sans-serif;
@@ -715,6 +875,18 @@ td.day-mark::after {
   font-weight: 700;
   margin: 18px 0 6px;
 }
+.location-detail .detail-bus {
+  font-family: "Nanum Square", sans-serif;
+  font-weight: 400;
+  color: #000;
+  margin: 0 0 6px;
+}
+.location-detail .detail-bus strong {
+  font-weight: 700;
+}
+.location-detail .detail-bus .sep {
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
 .location-detail .detail-text {
   font-family: "Nanum Square", sans-serif;
   font-weight: 400;
@@ -733,7 +905,13 @@ td.day-mark::after {
   color: #000;
 }
 .location-detail .lot-addr {
+  display: inline;
+  margin-left: 6px;
+  color: #555;
+}
+.location-detail .lot-addr--break {
   display: block;
+  margin-left: 0;
 }
 
 /* 공용 연한 버튼 */
@@ -750,7 +928,7 @@ td.day-mark::after {
 
 /* ===== 7. 마음 전하실 곳 ===== */
 .account .section-title {
-  font-family: "Nanum Square", sans-serif;
+  font-family: "EF Watermelon", sans-serif;
   font-weight: 400;
 }
 .account-cols {
@@ -873,7 +1051,7 @@ td.day-mark::after {
 
 /* ===== 8. 축하 메시지 ===== */
 .guestbook .section-title {
-  font-family: "Nanum Square", sans-serif;
+  font-family: "EF Watermelon", sans-serif;
   font-weight: 400;
 }
 .guestbook-list {
